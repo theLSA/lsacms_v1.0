@@ -1,0 +1,47 @@
+<html>
+<head>
+
+
+<!--百度的jquery静态资源库-->
+<script src="__PUBLIC__/stuassets/js/jquery.min.js"></script>
+<!-- 我采用的是当 id 为 username 的输入框改变时触发事件，并且把这个输入框的值通过 ajax 请求传回服务器端 -->
+<script type="text/javascript">
+ $(document).ready(function(){
+    $('#username').click(function () {
+        // 得到输入框的值
+        var $usernames = $("#username").val();
+        // 这里就是我上面说的地址，一定要写对，我是直接写的，没使用 U 方法
+      
+        // 这里 $retuenmessage 是一个对象，就是返回的值，要把他变成 json 形式，还需要一步，下面讲
+        $.ajax({
+            type: "post",
+            url: '__CONTROLLER__/ajaxtest',
+	    //data: 'username:$username',
+	    //async: false,
+	    datatype: 'json',
+            // 这里是当成功时就显示返回信息
+            success: function (data,status) {
+                // 把 $returnmessage 变成 json 格式的就只要在后面加 .responseText，xml我不知道，我比较喜欢 json 格式
+		$('#resText').empty();
+                $('#resText').html(data.info);
+		alert(data.res);
+            },
+            // 错误时
+            error: function () {
+                alert("error");
+            }
+        });
+    });
+});
+</script>
+</head>
+
+<body>
+
+username<input id="username" type="text">
+
+<div id="resText"></div>
+
+</body>
+
+</html>

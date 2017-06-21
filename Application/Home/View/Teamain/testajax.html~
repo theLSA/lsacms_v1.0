@@ -1,0 +1,40 @@
+  <!doctype html>
+ <html lang="en">
+ <head>
+     <meta charset="UTF-8">
+     <title>Document</title>
+	<script src="__PUBLIC__/stuassets/js/jquery.min.js"></script>
+     <!-- 引入jquery -->
+     <script>
+
+
+     $(document).ready(function(){
+  	$("#submit").click(function(){
+    		$.post("__CONTROLLER__/testajax",function(data,status){
+      			alert("数据：" + data + "\n状态：" + status);
+    });
+  });
+});
+     /*$(function(){
+         var ajaxUrl = '__CONTROLLER__/testajax';
+         var title = $("#title").val();
+         $("#submit").click(function(){
+             $.post(ajaxUrl,{'title':title},function(json){
+                 if(json.status == 1){
+                     $("#result").html(json.data);
+                 }else{
+                     alert(json.info);
+                 }
+             },dataType:'json');
+         });
+     })*/
+     </script>
+ </head>
+ <body>
+    
+         <input type="text" name="title" id="title" />
+         <span id="submit">提交</span>
+  
+     <div id="result"></div>
+ </body>
+ </html>
