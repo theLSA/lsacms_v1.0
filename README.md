@@ -25,3 +25,7 @@ redhat6+mysql14.14+php5+apache2
 # 结语：
 
 前端用了网上的一些模板，MVC模式，挺简单的项目，新手可以参考一下。
+
+
+
+# 欢迎访问我的博客：http://www.lsablog.com
